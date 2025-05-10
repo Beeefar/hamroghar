@@ -1,0 +1,67 @@
+-> cltr + alt + 'f' -- to reformat your code according to python guidelines
+
+#creating a virtual environment
+1) Run following command to create a virtual environment
+$python3 -m venv ./venv		#venv is name of virtual environment.You can set whatever you wants
+2) Run following command to use virtual environment
+$source ./venv/bin/activate
+3) To close virtual environment
+$deactivate
+
+
+admin-->
+id: aman
+email: agcy7320@gmail.com
+password: amanchaudhary
+
+
+###create admin page:
+1) Run the follwing command:
+$python3 manage.py createsuperuser
+->Enter the username and password you want
+
+###customize admin site:
+1) Create a folder in templates named admin.
+2) Create base_site.html in templates/admin.
+3) Add the code in base_site.html to be customized
+
+
+
+To create a app and view:
+
+####creating app
+->run following command:
+$$python3 manage.py startapp {appname}
+1) Go to settings.py and add your app in Installed apps
+2) Go to urls.py of the main project & add include your app's urls.py in url patterns
+only 1st time --> In your app's directory create a folder urls.py and set up that like previous app's urls.py
+
+
+####creating view
+optional -> If want to create template then create one
+3) Create that view in views.py of your app
+4) Go to urls.py of your app & insert that path of the view in urlpattern
+
+
+###While writing href links in html :
+1) {% load static %} after extends line if there
+2) href = "{% url 'name' %}" #name is what given in urls.py of particular app and of that view
+
+
+###Create models:
+1) create the models in models.py of app
+2) run the following commands
+$python3 manage.py makemigrations
+$python3 manage.py migrate
+3) Open the database and see the schemas are created!
+4) Register the models in app's admin.py to show them on admin page
+-->$sqlitebrowser	#To open the sqlitebrowser
+
+#to reset all migrations
+$python manage.py migrate --fake myappname zero
+
+#for inserting media files:
+1) Go to settings.py and add media root and url
+2) Go to urls.py of main project and add static to it
+
+
