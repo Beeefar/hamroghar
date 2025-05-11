@@ -11,8 +11,8 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <h1 class="display-4">Browse Our Properties</h1>
-          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
+          <h1 class="display-4">Explore Our Property Portfolio</h1>
+          <p class="lead">Discover premium homes and investment opportunities across Nepal's most desirable locations!</p>
         </div>
       </div>
     </div>
@@ -27,7 +27,7 @@
             <a href="{% url 'index' %}">
               <i class="fas fa-home"></i> Home</a>
           </li>
-          <li class="breadcrumb-item active"> Browse Listings</li>
+          <li class="breadcrumb-item active"> All Listings</li>
         </ol>
       </nav>
     </div>
@@ -44,7 +44,7 @@
             <img class="card-img-top" src="{{listing.photo_main.url}}" alt="">
             <div class="card-img-overlay">
               <h2>
-                <span class="badge badge-secondary text-white">{{listing.price | intcomma}}</span>
+                <span class="badge badge-secondary text-white">Rs.{{listing.price | intcomma}}</span>
               </h2>
             </div>
             <div class="card-body">
@@ -77,7 +77,7 @@
                   <i class="fas fa-clock"></i> {{listing.list_date | date:"M d, Y" }}</div>
               </div>
               <hr>
-              <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+              <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">View Full Details</a>
             </div>
           </div>
         </div>
@@ -85,25 +85,60 @@
         {% else %}
 
         <div class="col-md-12">
-          <p>No listings available</p>
+          <p>Currently no properties match your criteria. Our team is adding new listings daily - please check back soon or contact us for personalized recommendations.</p>
         </div>
 
         {% endif %}
       </div>
 
+      <!-- Pagination -->
+      {% if listings.paginator.num_pages > 1 %}
       <div class="row">
         <div class="col-md-12">
-
-            {% for num in listings.paginator.page_range %}
-              {% if num == listings.number %}
-                <span class="current"><b>{{ num }}</b></span>
-              {% else %}
-                <a href="?page={{ num }}"> {{ num }}</a>
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              {% if listings.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page=1" aria-label="First">
+                    <span aria-hidden="true">&laquo;&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ listings.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
               {% endif %}
-            {% endfor %}
 
+              {% for num in listings.paginator.page_range %}
+                {% if listings.number == num %}
+                  <li class="page-item active">
+                    <span class="page-link">{{ num }}</span>
+                  </li>
+                {% elif num > listings.number|add:'-3' and num < listings.number|add:'3' %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+
+              {% if listings.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ listings.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ listings.paginator.num_pages }}" aria-label="Last">
+                    <span aria-hidden="true">&raquo;&raquo;</span>
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          </nav>
         </div>
       </div>
+      {% endif %}
     </div>
   </section>
 {% endblock %}
