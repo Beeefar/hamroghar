@@ -29,9 +29,16 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'fallback-key-for-dev-only')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.onrender.com','hamroghar.onrender.com']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://hamroghar.onrender.com/',
+    'https://*.onrender.com'
+]
 
+# If using cookies for sessions
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -59,7 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ROOT_URLCONF = 'hamroghar.urls'
 
 TEMPLATES = [
