@@ -148,8 +148,8 @@ STATICFILES_DIRS = [
 ]
 
 #Media Folder Settings
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #Messages
 from django.contrib.messages import constants as messages
