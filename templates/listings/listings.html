@@ -68,8 +68,9 @@
               </div>
               <hr>
               <div class="row py-2 text-secondary">
-                <div class="col-12">
-                  <i class="fas fa-user"></i> {{listing.realtor}}</div><!-- it will return whatever it is in the foreign key model __str__ fun -->
+                <div class="col-12" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                  <i class="fas fa-user"></i> {{ listing.realtor }}
+                </div>
               </div>
               <div class="row text-secondary pb-2">
                 <div class="col-6">

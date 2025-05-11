@@ -160,8 +160,8 @@ MESSAGE_TAGS = {
 #Email config
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'helloofrns@gmail.com'
-EMAIL_HOST_PASSWORD = 'jdjxwkdmlstprqnv'
+EMAIL_HOST_USER = os.getenv('HOST_EMAIL')
+EMAIL_HOST_PASSWORD = os.getenv('HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
 
