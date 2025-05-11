@@ -1,5 +1,45 @@
- <!-- Footer -->
-  <footer id="main-footer" class="py-4 bg-primary text-white text-center">
-    Copyright &copy;
-    <span class="year"></span> Yash Real Estate
-  </footer>
+<!-- Footer -->
+<footer id="main-footer" class="pt-5 pb-4 bg-dark text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-4">Hamro Ghar</h5>
+        <p>Your trusted real estate partner in Nepal, helping you find the perfect property since 2010.</p>
+        <div class="social-icons mt-3">
+          <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h5 class="text-uppercase mb-4">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="{% url 'index' %}" class="text-white">Home</a></li>
+          <li class="mb-2"><a href="{% url 'about' %}" class="text-white">About Us</a></li>
+          <li class="mb-2"><a href="{% url 'listings' %}" class="text-white">Featured Listings</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-4">Contact Us</h5>
+        <address>
+          <p><i class="fas fa-map-marker-alt me-2"></i> Kathmandu, Nepal</p>
+          <p><i class="fas fa-phone me-2"></i> +977-1-1234567</p>
+          <p><i class="fas fa-envelope me-2"></i> info@hamroghar.com</p>
+        </address>
+      </div>
+    </div>
+    
+    <hr class="bg-light my-4">
+    
+    <div class="row">
+      <div class="col-md-12">
+        <p class="mb-0">
+          Copyright &copy; <span class="year"></span> Hamro Ghar. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

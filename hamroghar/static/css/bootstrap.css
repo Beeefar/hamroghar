@@ -2855,6 +2855,13 @@ input[type="button"].btn-block {
   .navbar-toggler:not(:disabled):not(.disabled) {
     cursor: pointer; }
 
+#head .brand_img {
+    height: 60px;       /* Increase from 50px */
+    width: 100px;       /* Increase from 80px */
+    vertical-align: middle;  /* Ensures proper text alignment */
+    margin-right: 10px; /* Adds spacing between logo and text */
+}
+
 .navbar-toggler-icon {
   display: inline-block;
   width: 1.5em;
@@ -2863,6 +2870,29 @@ input[type="button"].btn-block {
   content: "";
   background: no-repeat center center;
   background-size: 100% 100%; }
+.navbar {
+  /* Your existing navbar styles remain the same */
+  height: auto; /* or fixed height if needed */
+  min-height: 56px; /* default Bootstrap navbar height */
+}
+.navbar-brand img {
+  height: 40px; /* Increase this value to make logo bigger */
+  width: auto; /* Maintain aspect ratio */
+  max-height: none; /* Override any max-height restrictions */
+  transition: all 0.3s ease; /* Smooth resizing */
+}
+navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* 4. Ensure vertical centering */
+.navbar > .container,
+.navbar > .container-fluid {
+  align-items: center;
+}
 
 @media (max-width: 575.98px) {
   .navbar-expand-sm > .container,

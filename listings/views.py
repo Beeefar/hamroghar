@@ -1,8 +1,8 @@
 from django.shortcuts import render,get_object_or_404
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from .choices import price_choices, bedroom_choices, state_choices
+from .choices import price_choices, bedroom_choices, province_choices,area_choices
 from .models import Listing
-
+from datetime import datetime
 
 def index(request):
 	listings = Listing.objects.order_by('-list_date').filter(is_published=True)
@@ -12,14 +12,18 @@ def index(request):
 	paged_listings = paginator.get_page(page)
 	
 	context = {
-		'listings':paged_listings
+		'listings':paged_listings,
+		'province_choices':province_choices,
+        'bedroom_choices': bedroom_choices,
+        'price_choices': price_choices,
+        'area_choices': area_choices
 	}
 	return render(request, 'listings/listings.html',context) #app_name/template_name.html
 
 
 def listing(request, listing_id):
+	start_time = datetime.now()
 	listing = get_object_or_404(Listing, pk=listing_id)
-	
 	context = {
 		'listing':listing
 	}
@@ -60,7 +64,7 @@ def search(request):
 			queryset_list = queryset_list.filter(price__lte=price)
 
 	context={
-		'state_choices': state_choices,
+		'state_choices': province_choices,
 		'price_choices': price_choices,
 		'bedroom_choices': bedroom_choices,
 		'listings': queryset_list,
